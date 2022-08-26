@@ -1,5 +1,6 @@
 import os
-from typing import List
+
+from Homework_Plus.data import row_for_hm_9 as row
 
 
 def read_and_copy_text_by_sentence(text: str = None):
@@ -7,7 +8,7 @@ def read_and_copy_text_by_sentence(text: str = None):
     if text is None:
         print("Нажаль нема тут чого тут читати...")
     else:
-        print('Ось текст: ', text)
+        print('Назва файлу:', name_res_file)
 
         for symbol in '?!;':
             text = text.replace(symbol, str(symbol) + '.')
@@ -18,8 +19,9 @@ def read_and_copy_text_by_sentence(text: str = None):
             os.remove(f'./Result/{name_res_file}')
 
         with open(f'./Result/{name_res_file}', 'w') as file_res:
-            for row in list_sentence:
-                file_res.write(row + '\n')
+            for rows in list_sentence:
+                file_res.write(rows + '\n')
+
 
 
 def count_row(text: str):
@@ -27,7 +29,7 @@ def count_row(text: str):
     if os.path.isfile('./Result/Копія.txt'):
         with open('./Result/Копія.txt', 'r') as file:
             c_rows = len(file.readlines())
-        print('Кількість рядків у файлі: ', c_rows)
+        print('Кількість рядків у файлі: ' + str(c_rows))
 
 
 def count_chr(text: str):
@@ -35,4 +37,10 @@ def count_chr(text: str):
     if os.path.isfile('./Result/Копія.txt'):
         with open('./Result/Копія.txt', 'r') as file:
             c_chr = len(file.read())
-        print('Кількість слів у файлі: ', c_chr)
+        print('Кількість слів у файлі: ' + str(c_chr))
+
+
+def test():
+    read_and_copy_text_by_sentence(row)
+    count_row(row)
+    count_chr(row)
