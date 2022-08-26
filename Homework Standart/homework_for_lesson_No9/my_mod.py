@@ -1,6 +1,6 @@
 import os
 
-from Homework_Plus.data import row_for_hm_9 as row
+from Homework_Plus.data import row_for_hm_9 as row  # Імпорт змінної з текстом
 
 
 def read_and_copy_text_by_sentence(text: str = None):
