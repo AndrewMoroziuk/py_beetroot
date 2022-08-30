@@ -22,8 +22,8 @@ make_country(Україна="Київ", Франція="Париж")
 # A simple calculator.
 
 def calc(operator: str, *args: float):
-    x = 0
-    q = args[0]
+    x: int = 0
+    q: list = args[0]
     for i in args[1:]:
         if operator == '+': x += i
         if operator == '-': x -= i
