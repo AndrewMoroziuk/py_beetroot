@@ -52,7 +52,7 @@ def read_file():
             output = file.read()
             print(output)
 
-        repeat_read_file = input('Прочитати ще один файл? (y/n): ').lower()
+        repeat_read_file = input("Прочитати ще один файл? (y/n): ").lower()
 
 
 def main():
@@ -66,9 +66,9 @@ def main():
 
         if select_options == 'r':
             read_file()
-        elif select_options == 'w':
+        if select_options == 'w':
             write_file()
-        else:
+        if select_options not in ('w', 'r'):
             break
 
         repeat_main = input(select_options).lower()
