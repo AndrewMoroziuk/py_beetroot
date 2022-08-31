@@ -9,8 +9,9 @@ def print_name_files(path=''):
     list_files = {}
     names_files = glob.glob(path + '*.txt')
 
-    if names_files is None:
-        return [None]
+    if len(names_files) == 0:
+        print('Немає файлів')
+        return 0
 
     print('| №  |Назва файлу|\n+----+-----------+')
     num_key = 1
@@ -45,8 +46,10 @@ def read_file():
     repeat_read_file = 'y'
     while repeat_read_file == 'y':
         list_files = print_name_files()
-        my_choice = int(input('Виберіть номер файла для читання: '))
+        if list_files == 0:
+            return
 
+        my_choice = int(input('Виберіть номер файла для читання: '))
         selected_file = list_files[my_choice]
         with open(selected_file, 'r') as file:
             print(file.read())
