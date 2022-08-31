@@ -1,7 +1,7 @@
 import glob
 
 
-def name_files(path=''):
+def print_name_files(path=''):
     """
     Функція для функції 'write_file'.
     Виводить на екран список файлів з директорії.
@@ -44,13 +44,12 @@ def read_file():
     """
     repeat_read_file = 'y'
     while repeat_read_file == 'y':
-        list_files = name_files()
+        list_files = print_name_files()
         my_choice = int(input('Виберіть номер файла для читання: '))
 
         selected_file = list_files[my_choice]
         with open(selected_file, 'r') as file:
-            output = file.read()
-            print(output)
+            print(file.read())
 
         repeat_read_file = input("Прочитати ще один файл? (y/n): ").lower()
 
