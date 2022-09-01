@@ -1,4 +1,5 @@
 import glob
+import json
 
 
 def print_name_files(path=''):
@@ -30,27 +31,11 @@ def write_file():
     """
     repeat_write_file = 'y'
     while repeat_write_file == 'y':
-        create_or_upload = input(' (n) Створити\n (r) Редагувати')
-        if create_or_upload not in ('n', 'r'):
-            break
-        elif create_or_upload == 'n':
-            file_name = input('Назва нового файлу: ')
-            text_for_write = input('Введіть текст, для запису: ')
+        file_name = input('Назва нового файлу: ')
+        text_for_write = input('Введіть текст, для запису: ')
 
-            with open(f'./{file_name}.txt', 'w') as my_file:
-                my_file.write(f'{text_for_write}')
-        else:
-            list_files = print_name_files()
-            if list_files == 0:
-                return print('Немає файлів для перегляду')
-
-            my_choice = int(input('Виберіть номер файла для редагування: '))
-            if my_choice > len(list_files):
-                return print('Помилка. Нема файлу за таким номером')
-
-            selected_file = list_files[my_choice]
-            with open(selected_file, 'rw') as file:
-                print(file.read())
+        with open(f'./{file_name}.txt', 'w') as my_file:
+            my_file.write(f'{text_for_write}')
 
         repeat_write_file = input(' (y) Створит ще файл?').lower()
 
@@ -79,8 +64,8 @@ def read_file():
 def main():
     while True:
         select_options = input("\nЯку дію бажаєте виконати:\n"
-                  "'r' - прочитати файл або 'w' - створити файл.\n"
-                  "(Для виходу будь яку клавішу)")
+                               "'r' - прочитати файл / 'w' - створити файл.\n"
+                               "(Для виходу будь яку клавішу)")
         if select_options == 'r':
             read_file()
             continue
