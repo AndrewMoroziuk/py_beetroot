@@ -30,13 +30,29 @@ def write_file():
     """
     repeat_write_file = 'y'
     while repeat_write_file == 'y':
-        file_name = input('Назва нового файлу: ')
-        text_for_write = input('Введіть текст, для запису: ')
+        create_or_upload = input(' (n) Створити\n (r) Редагувати')
+        if create_or_upload not in ('n', 'r'):
+            break
+        elif create_or_upload == 'n':
+            file_name = input('Назва нового файлу: ')
+            text_for_write = input('Введіть текст, для запису: ')
 
-        with open(f'./{file_name}.txt', 'w') as my_file:
-            my_file.write(f'{text_for_write}')
+            with open(f'./{file_name}.txt', 'w') as my_file:
+                my_file.write(f'{text_for_write}')
+        else:
+            list_files = print_name_files()
+            if list_files == 0:
+                return print('Немає файлів для перегляду')
 
-        repeat_write_file = input('Створит ще файл? (y/n): ').lower()
+            my_choice = int(input('Виберіть номер файла для редагування: '))
+            if my_choice > len(list_files):
+                return print('Помилка. Нема файлу за таким номером')
+
+            selected_file = list_files[my_choice]
+            with open(selected_file, 'rw') as file:
+                print(file.read())
+
+        repeat_write_file = input(' (y) Створит ще файл?').lower()
 
 
 def read_file():
@@ -47,33 +63,32 @@ def read_file():
     while repeat_read_file == 'y':
         list_files = print_name_files()
         if list_files == 0:
-            return
+            return print('Немає файлів для перегляду')
 
         my_choice = int(input('Виберіть номер файла для читання: '))
+        if my_choice > len(list_files):
+            return print('Помилка. Нема файлу за таким номером')
+
         selected_file = list_files[my_choice]
         with open(selected_file, 'r') as file:
             print(file.read())
 
-        repeat_read_file = input("Прочитати ще один файл? (y/n): ").lower()
+        repeat_read_file = input(" (y) Прочитати ще один файл?").lower()
 
 
 def main():
-    welcome = "Яку дію бажаєте виконати:\nВведіть 'r' - прочитати або " \
-              "'w' - редагувати/створити файл.\n"\
-              "Для виходу будь яку клавішу: "
-
-    repeat_main = 'y'
-    while repeat_main == 'y':
-        select_options = input(welcome)
-
+    while True:
+        select_options = input("\nЯку дію бажаєте виконати:\n"
+                  "'r' - прочитати файл або 'w' - створити файл.\n"
+                  "(Для виходу будь яку клавішу)")
         if select_options == 'r':
             read_file()
-        if select_options == 'w':
+            continue
+        elif select_options == 'w':
             write_file()
-        if select_options not in ('w', 'r'):
+            continue
+        else:
             break
-
-        repeat_main = input(select_options).lower()
 
 
 if __name__ == '__main__':
