@@ -1,0 +1,15 @@
+[
+{
+    "name": "Andrew",
+    "second_name": "Moroziuk",
+    "phone": "0687701388",
+    "city": "Irpin"
+}
+,
+{
+    "name": "Andrew",
+    "second_name": "Moroziuk",
+    "phone": "0687701388",
+    "city": "Irpin"
+}
+]
