@@ -62,7 +62,6 @@ def write_file():
     """
     Записуємо новий текстовий файл.
     """
-
     while True:
         file_name = input('Назва нового файлу: ')
         text_for_write = input('Введіть текст, для запису: ')
@@ -74,14 +73,26 @@ def write_file():
             break
 
 
-def phone_book():
-    create_contact = json.dumps(
-        {
-            'name': 'Andrew',  # input('Назва: '),
-            'second_name': 'Moroziuk',  # input('Прізвище: '),
-            'phone': '0687701388',  # input('Номер тел.: '),
-            'city': 'Irpin'  # input('Назва міста: ')
-        }, indent=4)
+def add_contact_to_phone_book():
+    while True:
+        with open('./phone book.txt', 'r') as book:
+            slices = book.read()
+            slices_1 = slices[:-2] + ',\n'
+
+        with open('./phone book.txt', 'w') as book:
+            if slices == '':
+                book.write('[\n')
+            else:
+                book.write(slices_1)
+            book.write(json.dumps({
+                                    'name': 'Andrew',  # input('Назва: '),
+                                    'second_name': 'Moroziuk',  # input('Прізвище: '),
+                                    'phone': '0687701388',  # input('Номер тел.: '),
+                                    'city': 'Irpin'  # input('Назва міста: ')
+                                  }, indent=4))
+            book.write('\n]\n')
+        if input(' (y) Добавить ще один контакт?: ').lower() != 'y':
+            break
 
 
 def main():
@@ -96,7 +107,7 @@ def main():
         elif select_options == 'w':
             write_file()
         elif select_options == 'j':
-            phone_book()
+            add_contact_to_phone_book()
         else:
             break
 
