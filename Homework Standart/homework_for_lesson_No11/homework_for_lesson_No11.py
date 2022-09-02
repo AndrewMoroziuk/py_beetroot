@@ -39,7 +39,16 @@ def read_file():
         if list_files == 0:
             return print("Немає файлів для перегляду")
 
-        my_choice = int(input('Виберіть номер файла для читання: '))
+        try:
+            my_choice = int(input('Виберіть номер файла для читання: '))
+        except ValueError:
+            print('\n! Має бути передано число !\n')
+            continue
+
+        if my_choice > len(list_files):
+            print('\n! Немає такого номеру !\n')
+            continue
+
         selected_file = list_files[my_choice]
         with open(selected_file, 'r') as file:
             print(file.read())
