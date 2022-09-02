@@ -89,7 +89,7 @@ def add_contact_to_phone_book():
                                     'second_name': 'Moroziuk',  # input('Прізвище: '),
                                     'phone': '0687701388',  # input('Номер тел.: '),
                                     'city': 'Irpin'  # input('Назва міста: ')
-                                  }, indent=4))
+                                  }, indent=4, ensure_ascii=False))
             book.write('\n]\n')
         if input(' (y) Добавить ще один контакт?: ').lower() != 'y':
             break
