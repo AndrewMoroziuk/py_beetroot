@@ -16,7 +16,7 @@ def my_persistence_of_recursion(n, counter=0):
     """
     Рекурсивна функція.
     """
-    if len(str(n)) > 1:
+    if len(str(n)) >= 1:
         counter += 1
         res = 1
         for i in str(n):
