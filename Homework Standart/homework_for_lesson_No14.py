@@ -17,5 +17,7 @@ def square_all(*args):
 
 add(5, 6)
 square_all(16, 69)
+
+
 # Task 2
 
