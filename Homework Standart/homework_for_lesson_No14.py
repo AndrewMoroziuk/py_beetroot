@@ -1,6 +1,8 @@
 # Task 1
 def logger(func):
-    return print(func.__name__)
+    def inner(*args, **kwargs):
+        print(func.__name__, *args)
+    return inner
 
 
 @logger
@@ -12,5 +14,6 @@ def add(x, y):
 def square_all(*args):
     return [arg ** 2 for arg in args]
 
+add(5, 6)
 # Task 2
 
