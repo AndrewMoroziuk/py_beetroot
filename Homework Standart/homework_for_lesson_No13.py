@@ -36,5 +36,3 @@ def choose_func(lst_number, fun_1, fun_2):
 
 list_number = [int(x) for x in input().split()]
 choose_func(list_number, fun_one, fun_two)
-
-# Task 4
