@@ -14,6 +14,8 @@ def add(x, y):
 def square_all(*args):
     return [arg ** 2 for arg in args]
 
+
 add(5, 6)
+square_all(16, 69)
 # Task 2
 
